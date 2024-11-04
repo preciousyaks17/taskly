@@ -2,6 +2,7 @@ import { Link, Stack } from "expo-router";
 import { Pressable, Text } from "react-native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { theme } from "../../theme";
+
 export default function Layout() {
   return (
     <Stack>
