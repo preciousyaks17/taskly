@@ -10,7 +10,7 @@ import { ShoppingListItem } from "../components/ShoppingListItem";
 import { theme } from "../theme";
 import { useState, useEffect } from "react";
 import { getFromStorage, saveToStorage } from "../utils/storage";
-import * Haptics from 'expo-haptics';
+import * as Haptics from "expo-haptics";
 const storageKey = "shopping-list";
 type ShoppingListItemType = {
   id: string;
@@ -55,14 +55,14 @@ export default function App() {
     const newShoppingList = shoppingList.filter((item) => item.id !== id);
     saveToStorage(storageKey, newShoppingList);
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     setShoppingList(newShoppingList);
   };
 
   const handleToggleComplete = (id: string) => {
     const newShoppingList = shoppingList.map((item) => {
       if (item.id === id) {
-        if (item.completedAtTimestamp){
+        if (item.completedAtTimestamp) {
           Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
         } else {
           Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
